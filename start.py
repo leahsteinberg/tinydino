@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
-import random
+import random, requests
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ dinosaurs = None
 def make_tiny(url, hostname):
     global key_dict
 
-    key = get_random_unqiue_dinosaur()
+    key = get_random_article()
     key_dict[key] = url
     
     return ('%s/%s') %(hostname, key)
@@ -41,6 +41,9 @@ def get_random_unqiue_dinosaur():
 
     return dinosaurs[r]        
 
+def get_random_article():
+    r = requests.get('http://en.wikipedia.org/wiki/Special:Random')
+    return r.url.split('/')[-1]
 
 @app.route('/<key>')
 def redir_Url(key):
@@ -64,3 +67,4 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(debug = True)
+    
