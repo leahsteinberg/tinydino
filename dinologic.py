@@ -5,11 +5,13 @@ import random
 key_dict = {}
 
 def make_tiny(url, hostname):
-  # keep going until it's unique...?
-   
+  # keep going until it's not in the dictionary of shortened links
+
     print "in make tiny: " + url
     global key_dict
     key = new_dino_name(url)
+    while key in key_dict.keys():
+      key = new_dino_name(url)
     key_dict[key] = url
     return ('%s/%s') %(hostname, key)
 
