@@ -26,7 +26,11 @@ def save_list(list, filepath):
     f.close()
 
 def get_a_word(url):
+    print "in get a word: " + url
+    if url[:7] is not "http://":
+      url = 'http://'+ url
     html = requests.get(url)
+   
     header = BeautifulSoup(html.text).title.string
 
     tokens = PunktWordTokenizer().tokenize(header)
