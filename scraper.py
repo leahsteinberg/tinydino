@@ -1,6 +1,8 @@
 import requests
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 import sys
+from nltk.tokenize.punkt import PunktWordTokenizer
+from nltk.corpus import stopwords
 
 def get_dinosaurs():
     di_list = []
@@ -11,7 +13,8 @@ def get_dinosaurs():
     for name in possible_names:
         a = name.find('a')
         if a is not None:
-            di_list.append(name.text)
+            if name.text not in di_list:
+                di_list.append(name.text)
 
     return di_list
 
@@ -21,6 +24,20 @@ def save_list(list, filepath):
         if l.strip() != '':
             f.write(l + '\n')  
     f.close()
+
+def get_a_word(url):
+    html = requests.get(url)
+    header = BeautifulSoup(html.text).title.string
+
+    tokens = PunktWordTokenizer().tokenize(header)
+    stop = stopwords.words('english')
+
+    
+    for t in tokens:
+        t = t.lower()
+        if t.isalpha() and t not in stop:
+            return t
+    return ''
 
 if __name__ == '__main__':
     di_list = get_dinosaurs()
