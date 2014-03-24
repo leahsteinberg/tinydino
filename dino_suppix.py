@@ -57,20 +57,25 @@ def calc_prob(di_list):
 
     return di_list
 
+
+def reverse_dict(di_dict):
+  new_dict = {}
+  for key in di_dict.keys():
+    new_key = key[::-1]
+    new_dict[new_key] = di_dict[key]
+  return new_dict
+
+
 if __name__ == '__main__':
     dinosaurs = get_reverse_dinosaurs()
     suffix = get_suffix(dinosaurs, 8, 2)
     suffix = calc_prob(suffix)
     
     print suffix
+    in_order_suffix = reverse_dict(suffix)
+    f = open('suffix_dict.py', 'w+')
+    f.write('dino_dict = ')
+    f.write(str(in_order_suffix))
+    f.close()
     
-    sum_v = 0
-    for v in suffix.values():
-        sum_v += v
 
-    print sum_v
-
-    import operator
-
-    sorted_x = sorted(suffix.iteritems(), key=operator.itemgetter(1))
-    print sorted_x
