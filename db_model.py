@@ -35,7 +35,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 def add_row(shortenedlink, url):
-  print "in add row \n"
+  print "in add row  in db model\n"
   l = Link()
   l.shortlink = shortenedlink
   l.url = url
@@ -43,9 +43,10 @@ def add_row(shortenedlink, url):
   session.commit()
 
 def get_url(shortenedlink):
-  print "in get url\n"
+  print "in get url in db model\n"
   # returns a list of the url(s) (should be 1 or 0) that correspond to that shortened link
   retrieved =  session.query(Link.url).filter(Link.shortlink == shortenedlink).first()
+  print 'retrieved is: ' + retrieved + '\n'
   if retrieved is not None:
     return retrieved[0]
   else:
