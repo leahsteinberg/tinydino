@@ -9,8 +9,8 @@ def make_tiny(url, hostname):
     print "in make tiny: " + url + '\n'
     key = new_dino_name(url)
     #print db_model.get_url(key)
-    while db_model.get_url(key) != None:
-      key = new_dino_name(url)
+    #while db_model.get_url(key) != None:
+      #key = new_dino_name(url)
     db_model.add_row(key, url)
     return ('%s/%s') %(hostname, key)
 

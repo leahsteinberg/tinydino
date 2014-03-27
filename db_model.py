@@ -43,7 +43,9 @@ def add_row(shortenedlink, url):
   session.commit()
 
 def get_url(shortenedlink):
+  
   print "in get url in db model\n"
+  print "in get url, shortened link is: " + shortenedlink
   # returns a list of the url(s) (should be 1 or 0) that correspond to that shortened link
   #print 'link table is: ' + Link + '\n'
   #print 'session is: ' + session + '\n'
