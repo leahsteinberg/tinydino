@@ -34,14 +34,15 @@ def get_a_word(url):
     header = BeautifulSoup(html.text).title.string
 
     tokens = PunktWordTokenizer().tokenize(header)
-    stop = stopwords.words('english')
+    #stop = stopwords.words('english')
 
     
     for t in tokens:
         t = t.lower()
-        if t.isalpha() and t not in stop:
-	    print "word is: " + t
-            return t
+	if t.isalpha():
+	  #and t not in stop:
+	  print "word is: " + t
+          return t
     return ''
 
 if __name__ == '__main__':
