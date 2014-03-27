@@ -46,7 +46,7 @@ def get_url(shortenedlink):
   print "in get url in db model\n"
   # returns a list of the url(s) (should be 1 or 0) that correspond to that shortened link
   retrieved =  session.query(Link.url).filter(Link.shortlink == shortenedlink).first()
-  print 'retrieved is: ' + retrieved + '\n'
+  print ' should have gotten retrieved \n'
   if retrieved is not None:
     return retrieved[0]
   else:

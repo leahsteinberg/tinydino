@@ -40,6 +40,7 @@ def get_a_word(url):
     for t in tokens:
         t = t.lower()
         if t.isalpha() and t not in stop:
+	    print "word is: " + t
             return t
     return ''
 
