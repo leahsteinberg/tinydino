@@ -16,6 +16,7 @@ def make_tiny(url, hostname):
 
 
 def get_dino_suffix():
+  print 'in get dino suffix'
   accum = 0.0
   rand_num = random.random()
   for key in dino_dict.keys():
@@ -29,6 +30,7 @@ def new_dino_name(url):
   # pick dino suffix
   # get word from url
   # concatenate
+  print 'in new dino name'
   suffix = get_dino_suffix()
   prefix = scraper.get_a_word(url)
   return prefix + suffix
