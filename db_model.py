@@ -6,9 +6,14 @@ from sqlalchemy.orm import sessionmaker
 
 
 if os.environ.get('DATABASE_URL') is None:
+  print "using sqlite ~~~"
   SQLALCHEMY_DATABASE_URI = 'sqlite:///dinodb.db'
 else:
+  
   SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+  print "using post gres~~#("
+  print os.environ['DATABASE_URL']
+
 
 engine = sa.create_engine(SQLALCHEMY_DATABASE_URI)
 Base = declarative_base()
