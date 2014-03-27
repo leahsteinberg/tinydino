@@ -1,10 +1,16 @@
+import os
 import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import sessionmaker
 
 
-engine = sa.create_engine("sqlite:///dinodb.db")
+if os.environ.get('DATABASE_URL') is None:
+  SQLALCHEMY_DATABASE_URI = 'sqlite:///dinodb.db'
+else:
+  SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+engine = sa.create_engine(SQLALCHEMY_DATABASE_URI)
 Base = declarative_base()
 
 
@@ -17,7 +23,7 @@ class Link(Base):
 
 
 
-Base.metadata.create_all(engine)
+#Base.metadata.create_all(engine)
 
 
 Session = sessionmaker(bind=engine)
