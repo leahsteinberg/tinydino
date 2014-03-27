@@ -30,7 +30,7 @@ def get_a_word(url):
     if url[:7] is not "http://":
       url = 'http://'+ url
     html = requests.get(url)
-   
+   ### possibly our code is not going here??? why not printing out word is??
     header = BeautifulSoup(html.text).title.string
 
     tokens = PunktWordTokenizer().tokenize(header)

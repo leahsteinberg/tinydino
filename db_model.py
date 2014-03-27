@@ -45,8 +45,8 @@ def add_row(shortenedlink, url):
 def get_url(shortenedlink):
   print "in get url in db model\n"
   # returns a list of the url(s) (should be 1 or 0) that correspond to that shortened link
-  print 'link table is: ' + Link + '\n'
-  print 'session is: ' + session + '\n'
+  #print 'link table is: ' + Link + '\n'
+  #print 'session is: ' + session + '\n'
   
   retrieved =  session.query(Link.url).filter(Link.shortlink == shortenedlink).first()
   print ' should have gotten retrieved \n'

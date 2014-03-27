@@ -4,6 +4,7 @@ from flask import request, redirect
 import random, requests, dinologic
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 
 
