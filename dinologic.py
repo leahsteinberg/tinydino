@@ -6,7 +6,7 @@ import db_model # will it run the script?
 
 def make_tiny(url, hostname):
   # keep going until it's not in the dictionary of shortened links
-    print "in make tiny: " + url
+    print "in make tiny: " + url + '\n'
     key = new_dino_name(url)
     print db_model.get_url(key)
     while db_model.get_url(key) != None:
@@ -16,7 +16,7 @@ def make_tiny(url, hostname):
 
 
 def get_dino_suffix():
-  print 'in get dino suffix'
+  print 'in get dino suffix\n'
   accum = 0.0
   rand_num = random.random()
   for key in dino_dict.keys():
@@ -30,7 +30,7 @@ def new_dino_name(url):
   # pick dino suffix
   # get word from url
   # concatenate
-  print 'in new dino name'
+  print 'in new dino name\n'
   suffix = get_dino_suffix()
   prefix = scraper.get_a_word(url)
   return prefix + suffix

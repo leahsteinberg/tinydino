@@ -22,7 +22,7 @@ Base = declarative_base()
 
 class Link(Base):
   __tablename__ = 'Link'
-
+  print "in constructor for database in dinodb\n"
   shortlink = Column(String, primary_key=True)
   url = Column(String)
 
@@ -35,6 +35,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 def add_row(shortenedlink, url):
+  print "in add row \n"
   l = Link()
   l.shortlink = shortenedlink
   l.url = url
@@ -42,6 +43,7 @@ def add_row(shortenedlink, url):
   session.commit()
 
 def get_url(shortenedlink):
+  print "in get url\n"
   # returns a list of the url(s) (should be 1 or 0) that correspond to that shortened link
   retrieved =  session.query(Link.url).filter(Link.shortlink == shortenedlink).first()
   if retrieved is not None:
