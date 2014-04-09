@@ -2,11 +2,13 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect
 import random, requests, dinologic
+from flask.ext.sqlalchemy import SQLAlchemy #~~~~
 
 app = Flask(__name__)
 #app._static_folder = "../bootstrap/css/bootstrap.min.css"
 app.config['DEBUG'] = True
-
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] #~~~~
+db = SQLALCHEMY(app)
 
 
 @app.route('/<key>')
