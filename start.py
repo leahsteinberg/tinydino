@@ -65,7 +65,7 @@ def make_tiny(url, hostname):
     #while key not in Link.query.all():
     #while Link.query.filter_by(dino_link = key).first() != None:
       #key = new_dino_name(url)
-    new_link = Link(url, key)
+    new_link = Link('url stringgg', 'key stringgg')
     db.session.add(new_link)
     db.session.commit()
     return ('%s/%s') %(hostname, key)
