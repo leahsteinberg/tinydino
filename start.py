@@ -35,6 +35,7 @@ def favicon():
 def hello_world():
     if request.method == 'POST':
         url = request.form['linkbox']
+        print "url is " + url
         tiny_url = make_tiny(url, request.host)
         return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
     else:
@@ -52,13 +53,6 @@ class Link(db.Model):
     self.website = website
     self.dino_link
 
-  def set_link(website, dino_link):
-    new_link = Link(website, dino_link)
-    db.session.add(link)
-    db.session.commit()
-
-  def get_link(short_link):
-    return Link.query.filter_by(dino_link = short_link).first()
 
 
 
@@ -66,6 +60,7 @@ def make_tiny(url, hostname):
   # keep going until it's not in the dictionary of shortened links
     print "in make tiny: " + url + '\n'
     key = new_dino_name(url)
+    print "in make tiny: " + key + '\n'
     #print db_model.get_url(key)
     #while key not in Link.query.all():
     #while Link.query.filter_by(dino_link = key).first() != None:
