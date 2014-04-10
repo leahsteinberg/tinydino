@@ -1,15 +1,19 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
-import random, requests, dinologic
+import random, requests
 from flask.ext.sqlalchemy import SQLAlchemy #~~~~
+from suffix_dict import dino_dict
+import scraper
+import random
 import os
 
 app = Flask(__name__)
 #app._static_folder = "../bootstrap/css/bootstrap.min.css"
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] #~~~~
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:////tmp/test.db') #~~~~
 db = SQLAlchemy(app)
+db.create_all()
 
 
 @app.route('/<key>')
@@ -63,9 +67,12 @@ def make_tiny(url, hostname):
     print "in make tiny: " + url + '\n'
     key = new_dino_name(url)
     #print db_model.get_url(key)
-    while db.get_link(key) != None:
+    while key not in Link.query.all():
+    #while Link.query.filter_by(dino_link = key).first() != None:
       key = new_dino_name(url)
-    db.set_link(url, key)
+    new_link = Link(url, key)
+    db.session.add(new_link)
+    db.session.commit()
     return ('%s/%s') %(hostname, key)
 
 
@@ -93,7 +100,7 @@ def new_dino_name(url):
 
 
 def get_url(key):
-  return db_model.get_link(key)
+  return Link.query.filter_by(dino_link = key).first()
   #if key in key_dict:
    ## url = key_dict[key]
    # return url
