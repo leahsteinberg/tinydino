@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:////tmp/test.db') #~~~~
 db = SQLAlchemy(app)
-db.create_all()
+#db.create_all()
 
 
 @app.route('/<key>')
