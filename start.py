@@ -51,7 +51,7 @@ class Link(db.Model):
 
   def __init__(self, website, dino_link):
     self.website = website
-    self.dino_link
+    self.dino_link = dino_link
 
 
 
