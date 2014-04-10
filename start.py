@@ -34,7 +34,6 @@ def hello_world():
         print "222222"
         url = request.form['linkbox']
         print "3333333 "
-        
         tiny_url = dinologic.make_tiny(url, request.host)
         return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
     else:

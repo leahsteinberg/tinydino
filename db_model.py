@@ -1,8 +1,9 @@
 import os
-import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String
-from sqlalchemy.orm import sessionmaker
+# import sqlalchemy as sa
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy import Column, String
+# from sqlalchemy.orm import sessionmaker
+
 
 
 if os.environ.get('DATABASE_URL') is None:
