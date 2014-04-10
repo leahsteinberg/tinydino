@@ -9,7 +9,7 @@ app = Flask(__name__)
 #app._static_folder = "../bootstrap/css/bootstrap.min.css"
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'] #~~~~
-db = SQLALCHEMY(app)
+db = SQLAlchemy(app)
 
 
 @app.route('/<key>')
