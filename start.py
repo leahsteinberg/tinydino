@@ -67,9 +67,9 @@ def make_tiny(url, hostname):
     print "in make tiny: " + url + '\n'
     key = new_dino_name(url)
     #print db_model.get_url(key)
-    while key not in Link.query.all():
+    #while key not in Link.query.all():
     #while Link.query.filter_by(dino_link = key).first() != None:
-      key = new_dino_name(url)
+      #key = new_dino_name(url)
     new_link = Link(url, key)
     db.session.add(new_link)
     db.session.commit()
