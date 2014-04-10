@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request, redirect
 import random, requests, dinologic
 from flask.ext.sqlalchemy import SQLAlchemy #~~~~
+import os
 
 app = Flask(__name__)
 #app._static_folder = "../bootstrap/css/bootstrap.min.css"
