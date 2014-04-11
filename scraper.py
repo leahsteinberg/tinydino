@@ -29,8 +29,11 @@ def get_a_word(url):
     print "in get a word: " + url
     if url[:7] is not "http://":
       url = 'http://'+ url
-    html = requests.get(url)
-   ### possibly our code is not going here??? why not printing out word is??
+    try:
+      html = requests.get(url)
+    except requests.ConnectionError, e:
+        return 'dino'
+        #print e  #possibly our code is not going here??? why not printing out word is??
     header = BeautifulSoup(html.text).title.string
 
     tokens = PunktWordTokenizer().tokenize(header)
