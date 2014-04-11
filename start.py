@@ -98,7 +98,7 @@ def new_dino_name(url):
 
 
 def get_url(key):
-  return Link.query.filter_by(dino_link = key).first()[0]
+  return Link.query.filter_by(dino_link = key).first()
   #if key in key_dict:
    ## url = key_dict[key]
    # return url
