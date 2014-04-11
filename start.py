@@ -21,6 +21,8 @@ def redir_Url(key):
     #redir
     # calls something in dinologic to get the full url, then goes to that website
     url = get_url(key)
+    print "in redirect **"
+    print "should be string! getting url: ", url
     if url is not '':
       return redirect('http://' + url, code = 302)
     else:
@@ -96,7 +98,7 @@ def new_dino_name(url):
 
 
 def get_url(key):
-  return Link.query.filter_by(dino_link = key).first()
+  return Link.query.filter_by(dino_link = key).first()[0]
   #if key in key_dict:
    ## url = key_dict[key]
    # return url
