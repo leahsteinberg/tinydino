@@ -37,7 +37,8 @@ def hello_world():
         url = request.form['linkbox']
         print "url is " + url
         tiny_url = make_tiny(url, request.host)
-        return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
+        print "tiny url ~~~", tiny_url
+	return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
     else:
 
         return render_template('index.html')
