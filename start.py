@@ -40,7 +40,11 @@ def hello_world():
         print "url is " + url
         tiny_url = make_tiny(url, request.host)
         print "tiny url ~~~", tiny_url
-	return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
+	if tiny_url[:4] == 'http':
+	  return render_template('redir.html', long_url = url, tiny_url = tiny_url)
+
+	else:
+	  return render_template('redir.html', long_url = 'http://'+url, tiny_url = tiny_url)
     else:
 
         return render_template('index.html')
